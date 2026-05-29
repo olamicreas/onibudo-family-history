@@ -4,241 +4,321 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Onibudo Family History — Itan Idile Onibudo</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
+/* --- Base Styles & Variables --- */
+:root {
+    --gold: #cba052;
+    --dark-brown: #24170f;
+    --text-main: #3a2e25;
+    --bg-cream: #fdfaf4;
+    --bg-card: #ffffff;
+}
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    background: #f5efe4;
-    color: #2d2117;
+    font-family: 'Lora', serif;
+    background-color: var(--bg-cream);
+    color: var(--text-main);
     line-height: 1.8;
+    overflow-x: hidden;
 }
 
-/* --- Hero Section & Blur Perfection --- */
+h1, h2, h3, h4 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* --- Hero Section with Perfect Blur --- */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('IMG_6708.jpg');
+    /* Replace 'IMG_6708.jpg' with your actual image path */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('IMG_6708.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Parallax effect */
-    min-height: 60vh;
+    height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px 20px;
+    padding: 20px;
+    position: relative;
 }
 
 .hero-content {
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(12px); /* High quality blur effect */
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 50px 40px;
-    max-width: 900px;
+    background: rgba(20, 15, 10, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    padding: 60px 50px;
+    max-width: 800px;
     text-align: center;
-    color: white;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
     
-    /* Animation Trigger */
-    animation: fadeInUp 1.2s ease-out forwards;
+    /* Entrance Animation */
+    animation: heroFadeIn 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .hero h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 54px;
-    margin: 0 0 10px 0;
-    letter-spacing: 2px;
+    font-size: 52px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero h2 {
-    font-size: 26px;
-    color: #d4af37;
-    margin: 0 0 20px 0;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 2px;
     font-weight: 400;
+    font-style: italic;
+    font-family: 'Lora', serif;
 }
 
-.hero p {
-    margin: 0;
-    font-size: 19px;
-    line-height: 1.6;
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+    font-family: 'Cinzel', serif;
 }
 
-/* --- Navigation with Animated Hover --- */
+/* --- Navigation --- */
 nav {
-    background: #24170f;
-    padding: 18px;
+    background: var(--dark-brown);
+    padding: 20px 0;
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 nav a {
-    color: #f8e8b0;
+    color: #e8d8b7;
     text-decoration: none;
-    margin: 0 18px;
-    font-weight: 600;
-    position: relative;
-    padding-bottom: 5px;
+    margin: 0 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 1px;
     transition: color 0.3s ease;
+    position: relative;
 }
 
 nav a::after {
     content: '';
     position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #d4af37;
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-out;
+    width: 0%;
+    height: 1px;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--gold);
+    transition: width 0.3s ease;
 }
 
-nav a:hover {
-    color: #fff;
-}
+nav a:hover { color: var(--gold); }
+nav a:hover::after { width: 100%; }
 
-nav a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-/* --- Core Layout & Structure --- */
-section {
-    max-width: 1100px;
-    margin: auto;
+/* --- Storytelling Chapters --- */
+.story-container {
+    max-width: 850px;
+    margin: 0 auto;
     padding: 80px 25px;
 }
 
-h2.section-title {
-    font-family: 'Cinzel', serif;
-    color: #5e3d17;
-    font-size: 36px;
-    border-bottom: 3px solid #d4af37;
-    display: inline-block;
-    padding-bottom: 10px;
-    margin-top: 0;
-    margin-bottom: 30px;
+.chapter {
+    margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.quote {
-    background: #fff7e3;
-    border-left: 6px solid #d4af37;
-    padding: 25px;
-    margin: 35px 0;
+.chapter.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chapter-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.chapter-title {
+    font-size: 38px;
+    color: var(--dark-brown);
+    margin-bottom: 5px;
+}
+
+.chapter-subtitle {
+    font-size: 18px;
+    color: var(--gold);
     font-style: italic;
-    border-radius: 0 12px 12px 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-    transition: transform 0.3s ease;
+    font-family: 'Lora', serif;
 }
 
-.quote:hover {
-    transform: translateX(5px);
+.divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px auto;
 }
 
-/* --- Animated Cards --- */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, .05);
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(94, 61, 23, 0.15);
-}
-
-.card h3 {
-    margin-top: 0;
-    color: #5e3d17;
+.drop-cap::first-letter {
     font-family: 'Cinzel', serif;
+    float: left;
+    font-size: 75px;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-right: 12px;
+    color: var(--gold);
 }
 
-/* --- Animated Timeline Items --- */
-.timeline {
-    border-left: 4px solid #b78b2c;
-    padding-left: 25px;
+.yoruba-quote {
+    text-align: center;
+    font-size: 22px;
+    color: var(--dark-brown);
+    margin: 40px 0;
+    padding: 30px;
+    border-top: 1px solid rgba(203, 160, 82, 0.3);
+    border-bottom: 1px solid rgba(203, 160, 82, 0.3);
+    font-style: italic;
+    background: linear-gradient(90deg, rgba(253,250,244,0) 0%, rgba(203,160,82,0.05) 50%, rgba(253,250,244,0) 100%);
+}
+
+.yoruba-quote span {
+    display: block;
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+    font-family: 'Lora', serif;
+}
+
+/* --- Wars List --- */
+.war-list {
+    list-style: none;
+    padding: 0;
+    column-count: 2;
+    column-gap: 40px;
+    margin: 30px 0;
+}
+
+.war-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    padding-left: 20px;
+}
+
+.war-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+    top: 14px;
+}
+
+/* --- Compounds & Tables --- */
+.compounds-grid {
+    display: grid;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.compound-card {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid rgba(203, 160, 82, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.compound-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.compound-card h3 {
+    font-size: 26px;
+    color: var(--dark-brown);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
 }
 
-.timeline-item {
-    margin-bottom: 35px;
-    position: relative;
-    transition: transform 0.3s ease;
+th, td {
+    padding: 12px 0;
+    text-align: left;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -33px;
-    top: 5px;
-    background: #f5efe4;
-    border: 4px solid #b78b2c;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    transition: background-color 0.3s ease;
+th {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
-.timeline-item:hover {
-    transform: translateX(5px);
-}
-
-.timeline-item:hover::before {
-    background: #d4af37;
-}
-
-.timeline-item strong {
-    color: #5e3d17;
-    font-size: 18px;
+td:first-child {
+    font-weight: bold;
+    color: var(--dark-brown);
 }
 
 /* --- Footer --- */
 .footer {
-    background: #1b120b;
-    color: #d8c7a0;
+    background: var(--dark-brown);
+    color: #e8d8b7;
     text-align: center;
-    padding: 50px 20px;
+    padding: 60px 20px;
+    font-family: 'Cinzel', serif;
 }
 
-.footer p {
-    margin: 8px;
+.footer p { margin: 10px 0; }
+.footer .logo-mark { font-size: 30px; color: var(--gold); margin-bottom: 20px; }
+
+/* --- Keyframes --- */
+@keyframes heroFadeIn {
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Keyframe Animations --- */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-10px) translateX(-50%); }
+    60% { transform: translateY(-5px) translateX(-50%); }
 }
 
-/* Responsive adjustments */
+/* Responsive */
 @media(max-width: 768px) {
-    .hero h1 { font-size: 38px; }
-    .hero h2 { font-size: 20px; }
-    .hero-content { padding: 30px 20px; }
-    section { padding: 50px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero h2 { font-size: 18px; }
+    .hero-content { padding: 40px 20px; }
+    .war-list { column-count: 1; }
+    .chapter-title { font-size: 30px; }
+    nav a { display: block; margin: 10px 0; }
 }
 </style>
 </head>
@@ -246,131 +326,202 @@ h2.section-title {
 
 <div class="hero">
     <div class="hero-content">
-        <h1>ONIBUDO FAMILY HISTORY</h1>
+        <h1>Onibudo Family History</h1>
         <h2>Itan Idile Onibudo</h2>
-        <p>
-            Preserving the warrior heritage, lineage, culture, and historical legacy
-            of the descendants of Olawolu Onibudo of Ibadanland.
-        </p>
     </div>
+    <div class="scroll-indicator">Scroll to Begin</div>
 </div>
 
 <nav>
     <a href="#origins">Origins</a>
-    <a href="#warriors">Warrior Legacy</a>
-    <a href="#settlements">Historic Compounds</a>
-    <a href="#timeline">Timeline</a>
+    <a href="#arrival">Arrival in Ibadan</a>
+    <a href="#warrior">The Warrior</a>
+    <a href="#lion">Kiniun Onibudo</a>
+    <a href="#compounds">Historic Compounds</a>
     <a href="#legacy">Legacy</a>
 </nav>
 
-<section id="origins">
-    <h2 class="section-title">Family Origins</h2>
-    <p>
-        Olawolu “Onibudo” was a renowned Ibadan warrior (Jagun-jagun Ibadan)
-        descended from Prince Adeyanju, son of Alaafin Abiodun Adegoolu of the Old Oyo Empire.
-        Through royal maternal lineages from Shaki and Ile-Igbon, the families of
-        Toki and Onibudo became deeply woven into Yoruba military and cultural history.
-    </p>
+<div class="story-container">
 
-    <div class="quote">
-        “Itan wa ni ipilẹ ọjọ iwaju wa.”
-        <br>
-        <strong>— Our history is the foundation of our future.</strong>
-    </div>
-</section>
+    <!-- CHAPTER 1 -->
+    <section id="origins" class="chapter">
+        <div class="chapter-header">
+            <h2 class="chapter-title">Introduction</h2>
+            <div class="divider"></div>
+        </div>
+        <p class="drop-cap">Olawolu “Onibudo” was a renowned Ibadan warrior (jagun-jagun Ibadan) of noble Yoruba ancestry. He was born in Oyo to Prince Adeyanju, son of Alaafin Abiodun Adegoolu, who reigned over the Old Oyo Empire from 1770–1789.</p>
+        <p>Onibudo was the younger brother of Toki, also known as Omotoki or Erintoki. Although they shared the same father, they were born by different mothers. Onibudo’s mother was a princess (omo oba) from Shaki, while Toki’s mother was a princess from Ile-Igbon.</p>
+        <p>Prince Adeyanju was next in line to become Alaafin of Oyo. Before his installation, he consulted Ifa (difa), and the oracle revealed that he would enjoy a peaceful reign if certain sacrifices (ebo) were performed.</p>
+        <p>Unfortunately, before the sacrifices could be completed, he became gravely ill. Realizing he might not survive, he instructed his wives to return with their children to their maternal hometowns for safety, protection, and proper upbringing.</p>
+        <ul>
+            <li><strong>Toki</strong> was taken to Ile-Igbon.</li>
+            <li><strong>Onibudo</strong> was taken to Shaki.</li>
+        </ul>
+        <p>It was from these maternal hometowns that both brothers survived, grew into adulthood, became warriors (akinkanju jagun), and later migrated to Ibadan during the era of the Yoruba jihads and inter-tribal wars.</p>
+    </section>
 
-<section id="warriors">
-    <h2 class="section-title">Warrior Legacy</h2>
-
-    <div class="card-grid">
-        <div class="card">
-            <h3>Ogun Owu</h3>
-            <p>
-                The destruction of earlier Ibadan settlements during the Owu War
-                shaped the migration and military history of the Onibudo lineage.
-            </p>
+    <!-- CHAPTER 2 -->
+    <section id="arrival" class="chapter">
+        <div class="chapter-header">
+            <h2 class="chapter-title">Arrival in Ibadan</h2>
+            <div class="chapter-subtitle">Bibode si Ibadan</div>
+            <div class="divider"></div>
+        </div>
+        <p>Toki arrived in Ibadan before his younger brother and became established around the Ayeye and Alekuso areas. About five months later, Olawolu Onibudo joined him.</p>
+        
+        <div class="yoruba-quote">
+            “Oluwa gbogbo Oke Ayeye nigba kan”
+            <span>Lord of the entire Oke Ayeye at one time.</span>
         </div>
 
-        <div class="card">
-            <h3>Kiniun Onibudo</h3>
-            <p>
-                Ibikunle, known as “Kiniun Onibudo,” became one of the greatest Baloguns
-                in Ibadan history through courage, loyalty, and military brilliance.
-            </p>
+        <p>Historical references from <em>Iwe Itan Ibadan</em> confirmed that both Toki and Onibudo were among the warriors who participated in the re-establishment of the third Ibadan around 1810 after the destruction caused by the Owu War (Ogun Owu).</p>
+        
+        <p>The historical account listed notable warriors from Oyo, Osun, Ife, Ijebu, and Egba who settled permanently in Ibadan, including Oluyedun, Oluyole, Babalola, Oderinlo, Opeagbe, Lakanle, Toki, Olupoyi, Onibudo, and Ayeye.</p>
+
+        <div class="yoruba-quote" style="font-size: 18px;">
+            “Awon Oyo ati awon Ife si wa yika Oja Iba; oruko ile won ko i ti pare titi di isinsinyi.”
+            <span>The Oyo and Ife people settled around Oja-Iba, and the names of their compounds still exist till today.</span>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>Budo Ija</h3>
-            <p>
-                The name “Onibudo” emerged from Olawolu’s exceptional ability in
-                establishing and protecting military camps during wartime.
-            </p>
+    <!-- CHAPTER 3 -->
+    <section id="warrior" class="chapter">
+        <div class="chapter-header">
+            <h2 class="chapter-title">Onibudo as a Warrior</h2>
+            <div class="chapter-subtitle">Gege bi Akinkanju Jagun</div>
+            <div class="divider"></div>
         </div>
-    </div>
-</section>
+        <p>During the reign of Basorun Oluyole, Onibudo became recognized as one of the fearless and influential warriors in Ibadan. Historical records described him among “Awon akikanju ti ko se e fowo ro seyin” — <em>Brave men who could not be ignored.</em></p>
+        
+        <p>Onibudo fought in several major Yoruba wars. These wars were fought alongside Toki, his elder brother, and Ibikunle, the famous warrior who later joined them:</p>
+        <ul class="war-list">
+            <li>Ogun Ilorin</li>
+            <li>Ogun Ajase</li>
+            <li>Ogun Sabe Opara</li>
+            <li>Ogun Iwere Ile</li>
+            <li>Ogun Igboho</li>
+            <li>Ogun Ejio</li>
+        </ul>
+    </section>
 
-<section id="settlements">
-    <h2 class="section-title">Historic Compounds</h2>
-
-    <p>
-        The settlements and compounds of Toki, Onibudo, Ibikunle, and Yeosa became
-        part of the foundational structure of present-day Ibadan.
-    </p>
-
-    <ul>
-        <li><strong>Ile Toki Onibudo</strong> — Oke Ayeye, Ibadan</li>
-        <li><strong>Idi Ogun Onibudo</strong> — Idikan / Opoyeosa Junction</li>
-        <li><strong>Ile Ibikunle</strong> — Historic Balogun Compound</li>
-        <li><strong>Ile Yeosa</strong> — One of the largest compounds in Ibadan</li>
-    </ul>
-</section>
-
-<section id="timeline">
-    <h2 class="section-title">Historical Timeline</h2>
-
-    <div class="timeline">
-        <div class="timeline-item">
-            <strong>1770–1789</strong>
-            <p>Reign of Alaafin Abiodun Adegoolu in the Old Oyo Empire.</p>
+    <!-- CHAPTER 4 -->
+    <section id="lion" class="chapter">
+        <div class="chapter-header">
+            <h2 class="chapter-title">Ibikunle & The Title</h2>
+            <div class="chapter-subtitle">Kiniun Onibudo</div>
+            <div class="divider"></div>
         </div>
+        <p>Ibikunle originally came from Ogbomoso and arrived in Ibadan as a warrior (omo ogun). He was introduced to Toki and Onibudo by Aragba and joined their military expeditions.</p>
+        
+        <p>Historical accounts later described Ibikunle as <strong>“Kiniun Onibudo”</strong> (The Lion of Onibudo). The title reflected his bravery (akinkanju), loyalty, and military strength within Onibudo’s war camp (budo ija).</p>
 
-        <div class="timeline-item">
-            <strong>Early 1800s</strong>
-            <p>Toki and Onibudo migrated and became established warriors in Ibadan.</p>
+        <p>The name <em>“Onibudo”</em> itself was derived from Olawolu’s remarkable ability in establishing and defending war camps during military expeditions. The phrase <strong>“A sure pa budo ija”</strong> was associated with his tactical strength in constructing and protecting military camps.</p>
+        
+        <p>Ibikunle later rose to become Balogun (Military Commander) of Ibadanland and eventually became one of the greatest military leaders in Ibadan history.</p>
+
+        <div class="yoruba-quote">
+            “Balogun bi Ibikunle ko si ni Ibadan ri.”
+            <span>There has never been a Balogun like Ibikunle in Ibadan.</span>
         </div>
+    </section>
 
-        <div class="timeline-item">
-            <strong>1810</strong>
-            <p>Re-establishment of the third Ibadan after the destruction caused by Ogun Owu.</p>
+    <!-- CHAPTER 5 -->
+    <section id="compounds" class="chapter">
+        <div class="chapter-header">
+            <h2 class="chapter-title">Historic Family Compounds</h2>
+            <div class="chapter-subtitle">Awon Ile Ola Ni Ibadan & Idi Ogun Won</div>
+            <div class="divider"></div>
         </div>
+        
+        <p>Both brothers maintained separate military bases (Idi Ogun) around the Oke Ayeye area of Ibadan. Toki’s Idi Ogun was located near the present-day public borehole at Oke Ayeye, while Onibudo’s Idi Ogun was located around the junction of Idikan and Opoyeosa.</p>
 
-        <div class="timeline-item">
-            <strong>Era of Basorun Oluyole</strong>
-            <p>Onibudo rose among the most respected warriors in Ibadanland.</p>
+        <div class="compounds-grid">
+            <div class="compound-card">
+                <h3>Ile Toki Onibudo</h3>
+                <p>Historical records described Ile Toki Onibudo as one of the foundational noble compounds (ile ola) in Ibadan. After Onibudo’s death, leadership passed to Ibikunle according to the warrior tradition of the time: <em>“Bi jagun-jagun ba ku, olori omo ogun re ni awon ilu fi n ropo re.”</em></p>
+                <table>
+                    <tr><th>Notable Successors</th><th>Title</th></tr>
+                    <tr><td>Toki Onibudo</td><td>No Chieftaincy Title</td></tr>
+                    <tr><td>Ibikunle</td><td>Balogun Ibadan</td></tr>
+                    <tr><td>Oluokun</td><td>Ekefa Seriki</td></tr>
+                    <tr><td>Olugbodi</td><td>Mogaji</td></tr>
+                </table>
+            </div>
+
+            <div class="compound-card">
+                <h3>Ile Ibikunle</h3>
+                <p>The house of Ibikunle became one of the most respected compounds in Ibadan history. <em>“Koi ti si Balogun bi Ibikunle ni ilu Ibadan titi di oni.”</em></p>
+                <table>
+                    <tr><th>Notable Successors</th><th>Title</th></tr>
+                    <tr><td>Ibikunle</td><td>Balogun</td></tr>
+                    <tr><td>Kuejo</td><td>Mogaji</td></tr>
+                    <tr><td>Oyewo</td><td>Aareago Balogun</td></tr>
+                    <tr><td>Iyapo</td><td>Seriki</td></tr>
+                    <tr><td>Akintola</td><td>Balogun</td></tr>
+                    <tr><td>Oyedeji</td><td>Osi Balogun</td></tr>
+                    <tr><td>Akinola</td><td>Ekerin Balogun</td></tr>
+                    <tr><td>Madandola</td><td>Otun Balogun</td></tr>
+                </table>
+            </div>
+
+            <div class="compound-card">
+                <h3>Ile Yeosa</h3>
+                <p>Ile Yeosa was also recognized as one of the largest and most influential compounds in Ibadan.</p>
+                <table>
+                    <tr><th>Notable Successors</th><th>Title</th></tr>
+                    <tr><td>Yeosa</td><td>Ekerin Iba Oluyole</td></tr>
+                    <tr><td>Oyeniwe</td><td>Aareago</td></tr>
+                    <tr><td>Olojede</td><td>Mogaji</td></tr>
+                    <tr><td>Ojebiyi</td><td>Mogaji</td></tr>
+                    <tr><td>Oke</td><td>Mogaji</td></tr>
+                </table>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="legacy">
-    <h2 class="section-title">Legacy & Preservation</h2>
+    <!-- CHAPTER 6 -->
+    <section id="legacy" class="chapter">
+        <div class="chapter-header">
+            <h2 class="chapter-title">Legacy & Conclusion</h2>
+            <div class="chapter-subtitle">Ogún àti Ogúnlà Onibudo</div>
+            <div class="divider"></div>
+        </div>
+        <p>Onibudo was an exceptional warrior whose courage, leadership, and military wisdom contributed greatly to the survival and expansion of Ibadan after the devastating Owu War. Unlike many who fled, Onibudo remained and became one of the warriors who helped establish the third Ibadan — the same Ibadan that exists today.</p>
+        
+        <p>The histories of the Toki, Onibudo, and Ibikunle families remain deeply connected through shared ancestry, military heritage, and contributions to the development of Ibadanland.</p>
 
-    <p>
-        The Onibudo, Toki, and Ibikunle families remain united through shared ancestry,
-        military heritage, and contributions to the growth of Ibadanland.
-    </p>
+        <p>Today, these families continue to represent an important part of Ibadan’s historical and cultural foundation. Their unity (isokan), cooperation, and preservation of Yoruba heritage remain essential for sustaining the legacy left behind by their ancestors. As descendants of these great warriors (omo jagun nla), preserving this history ensures that future generations will continue to remember the sacrifices, courage, and leadership that helped shape modern Ibadan.</p>
+    </section>
 
-    <div class="quote">
-        “A ki i sa ogun ti baba ẹni ja.”
-        <br>
-        <strong>— One does not flee from the battle fought by his ancestors.</strong>
-    </div>
-</section>
+</div>
 
 <div class="footer">
-    <p><strong>ONIBUDO FAMILY HERITAGE ARCHIVE</strong></p>
-    <p>Preserving Yoruba History • Warrior Legacy • Ibadan Heritage</p>
-    <p>© 2026 Onibudo Family</p>
+    <div class="logo-mark">⚔</div>
+    <p>ONIBUDO FAMILY HERITAGE ARCHIVE</p>
+    <p style="font-family: 'Lora', serif; font-size: 14px; font-style: italic;">Preserving Yoruba History • Warrior Legacy • Ibadan Heritage</p>
 </div>
+
+<!-- JavaScript for Scroll Animations -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: Stop observing once it's visible if you only want it to animate once
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.15 // Triggers when 15% of the element is visible
+        });
+
+        const chapters = document.querySelectorAll('.chapter');
+        chapters.forEach((chapter) => {
+            observer.observe(chapter);
+        });
+    });
+</script>
 
 </body>
 </html>
