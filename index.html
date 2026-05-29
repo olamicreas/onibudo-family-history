@@ -1,115 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="google-site-verification" content="S6Nv4n0iA_NUbTFTJJedqNIdaTWiq4CcEP_l2ws9VP4" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Onibudo Family History — Itan Idile Onibudo</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+html{
+    scroll-behavior:smooth;
+}
+*{
+    box-sizing:border-box;
+}
 body{
     margin:0;
     font-family:'Open Sans',sans-serif;
     background:#f5efe4;
     color:#2d2117;
     line-height:1.8;
+    overflow-x:hidden;
 }
+/* HERO */
 .hero{
-    background:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+    position:relative;
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.7)),
     url('IMG_6708.jpg');
     background-size:cover;
     background-position:center;
-    color:white;
+    background-attachment:fixed;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:140px 20px;
+    padding:40px;
+}
+/* Animated overlay glow */
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at top right,
+    rgba(212,175,55,.25),
+    transparent 40%);
+    animation:pulseGlow 6s infinite alternate;
+}
+@keyframes pulseGlow{
+    from{
+        opacity:.4;
+        transform:scale(1);
+    }
+    to{
+        opacity:.9;
+        transform:scale(1.08);
+    }
+}
+/* Glass effect text box */
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    padding:45px;
+    border-radius:24px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:
+    0 8px 32px rgba(0,0,0,.35);
+    animation:fadeUp 1.3s ease;
+}
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 .hero h1{
     font-family:'Cinzel',serif;
-    font-size:58px;
-    margin-bottom:10px;
+    font-size:72px;
+    margin-bottom:12px;
+    letter-spacing:3px;
+    color:#fff;
+    text-shadow:
+    0 0 15px rgba(212,175,55,.4);
 }
 .hero h2{
-    font-size:28px;
+    font-size:30px;
     color:#d4af37;
     margin-top:0;
+    margin-bottom:25px;
 }
 .hero p{
-    max-width:850px;
-    margin:auto;
-    font-size:20px;
+    font-size:21px;
+    color:#f4f4f4;
 }
+/* NAVIGATION */
 nav{
-    background:#24170f;
-    padding:15px;
-    text-align:center;
     position:sticky;
     top:0;
+    z-index:999;
+    backdrop-filter:blur(12px);
+    background:rgba(20,12,7,.75);
+    padding:18px;
+    text-align:center;
+    border-bottom:
+    1px solid rgba(255,255,255,.08);
 }
 nav a{
     color:#f8e8b0;
     text-decoration:none;
-    margin:0 18px;
+    margin:0 20px;
     font-weight:600;
+    transition:.3s ease;
+    position:relative;
 }
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:-6px;
+    background:#d4af37;
+    transition:.3s;
+}
+nav a:hover::after{
+    width:100%;
+}
+nav a:hover{
+    color:#fff;
+}
+/* SECTIONS */
 section{
-    max-width:1100px;
+    max-width:1150px;
     margin:auto;
-    padding:70px 25px;
+    padding:90px 25px;
+    animation:fadeSection linear;
+    animation-timeline:view();
+    animation-range:entry 0% cover 30%;
+}
+@keyframes fadeSection{
+    from{
+        opacity:0;
+        transform:translateY(70px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 h2{
     font-family:'Cinzel',serif;
     color:#5e3d17;
-    font-size:36px;
+    font-size:42px;
     border-bottom:3px solid #d4af37;
     display:inline-block;
     padding-bottom:10px;
+    margin-bottom:35px;
 }
+/* QUOTE */
 .quote{
     background:#fff7e3;
     border-left:6px solid #d4af37;
-    padding:25px;
-    margin:35px 0;
+    padding:30px;
+    margin:45px 0;
     font-style:italic;
+    border-radius:14px;
+    box-shadow:
+    0 8px 24px rgba(0,0,0,.08);
+    transition:.4s ease;
 }
+.quote:hover{
+    transform:translateY(-5px);
+}
+/* CARDS */
 .card-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+    grid-template-columns:
+    repeat(auto-fit,minmax(270px,1fr));
+    gap:30px;
 }
 .card{
     background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 4px 14px rgba(0,0,0,.08);
+    padding:30px;
+    border-radius:18px;
+    box-shadow:
+    0 10px 28px rgba(0,0,0,.08);
+    transition:.4s ease;
+    position:relative;
+    overflow:hidden;
 }
+.card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+    135deg,
+    rgba(212,175,55,.08),
+    transparent);
+    opacity:0;
+    transition:.4s;
+}
+.card:hover::before{
+    opacity:1;
+}
+.card:hover{
+    transform:
+    translateY(-12px)
+    scale(1.02);
+    box-shadow:
+    0 18px 38px rgba(0,0,0,.15);
+}
+.card h3{
+    color:#7a531f;
+    margin-top:0;
+}
+/* TIMELINE */
 .timeline{
     border-left:4px solid #b78b2c;
-    padding-left:25px;
+    padding-left:35px;
+    position:relative;
 }
 .timeline-item{
-    margin-bottom:30px;
+    margin-bottom:45px;
+    position:relative;
 }
+.timeline-item::before{
+    content:'';
+    position:absolute;
+    left:-46px;
+    top:6px;
+    width:18px;
+    height:18px;
+    background:#d4af37;
+    border-radius:50%;
+    box-shadow:
+    0 0 15px rgba(212,175,55,.6);
+}
+/* LISTS */
+ul li{
+    margin-bottom:14px;
+}
+/* FOOTER */
 .footer{
     background:#1b120b;
     color:#d8c7a0;
     text-align:center;
-    padding:45px 20px;
+    padding:65px 20px;
+    margin-top:70px;
 }
 .footer p{
-    margin:8px;
+    margin:10px;
+}
+/* RESPONSIVE */
+@media(max-width:768px){
+.hero h1{
+    font-size:46px;
+}
+.hero h2{
+    font-size:24px;
+}
+.hero p{
+    font-size:18px;
+}
+.hero-content{
+    padding:30px;
+}
+nav a{
+    margin:0 10px;
+    font-size:14px;
+}
+h2{
+    font-size:34px;
+}
 }
 </style>
 </head>
 <body>
-
 <div class="hero">
-    <h1>ONIBUDO FAMILY HISTORY</h1>
-    <h2>Itan Idile Onibudo</h2>
-    <p>
-        Preserving the warrior heritage, lineage, culture, and historical legacy
-        of the descendants of Olawolu Onibudo of Ibadanland.
-    </p>
+    <div class="hero-content">
+        <h1>ONIBUDO FAMILY HISTORY</h1>
+        <h2>Itan Idile Onibudo</h2>
+        <p>
+            Preserving the warrior heritage, lineage,
+            culture, and historical legacy of the descendants
+            of Olawolu Onibudo of Ibadanland.
+        </p>
+    </div>
 </div>
-
 <nav>
     <a href="#origins">Origins</a>
     <a href="#warriors">Warrior Legacy</a>
@@ -117,115 +305,6 @@ h2{
     <a href="#timeline">Timeline</a>
     <a href="#legacy">Legacy</a>
 </nav>
-
-<section id="origins">
-    <h2>Family Origins</h2>
-    <p>
-        Olawolu “Onibudo” was a renowned Ibadan warrior (Jagun-jagun Ibadan)
-        descended from Prince Adeyanju, son of Alaafin Abiodun Adegoolu of the Old Oyo Empire.
-        Through royal maternal lineages from Shaki and Ile-Igbon, the families of
-        Toki and Onibudo became deeply woven into Yoruba military and cultural history.
-    </p>
-
-    <div class="quote">
-        “Itan wa ni ipilẹ ọjọ iwaju wa.”
-        <br>
-        <strong>— Our history is the foundation of our future.</strong>
-    </div>
-</section>
-
-<section id="warriors">
-    <h2>Warrior Legacy</h2>
-
-    <div class="card-grid">
-        <div class="card">
-            <h3>Ogun Owu</h3>
-            <p>
-                The destruction of earlier Ibadan settlements during the Owu War
-                shaped the migration and military history of the Onibudo lineage.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Kiniun Onibudo</h3>
-            <p>
-                Ibikunle, known as “Kiniun Onibudo,” became one of the greatest Baloguns
-                in Ibadan history through courage, loyalty, and military brilliance.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>Budo Ija</h3>
-            <p>
-                The name “Onibudo” emerged from Olawolu’s exceptional ability in
-                establishing and protecting military camps during wartime.
-            </p>
-        </div>
-    </div>
-</section>
-
-<section id="settlements">
-    <h2>Historic Compounds</h2>
-
-    <p>
-        The settlements and compounds of Toki, Onibudo, Ibikunle, and Yeosa became
-        part of the foundational structure of present-day Ibadan.
-    </p>
-
-    <ul>
-        <li><strong>Ile Toki Onibudo</strong> — Oke Ayeye, Ibadan</li>
-        <li><strong>Idi Ogun Onibudo</strong> — Idikan / Opoyeosa Junction</li>
-        <li><strong>Ile Ibikunle</strong> — Historic Balogun Compound</li>
-        <li><strong>Ile Yeosa</strong> — One of the largest compounds in Ibadan</li>
-    </ul>
-</section>
-
-<section id="timeline">
-    <h2>Historical Timeline</h2>
-
-    <div class="timeline">
-        <div class="timeline-item">
-            <strong>1770–1789</strong>
-            <p>Reign of Alaafin Abiodun Adegoolu in the Old Oyo Empire.</p>
-        </div>
-
-        <div class="timeline-item">
-            <strong>Early 1800s</strong>
-            <p>Toki and Onibudo migrated and became established warriors in Ibadan.</p>
-        </div>
-
-        <div class="timeline-item">
-            <strong>1810</strong>
-            <p>Re-establishment of the third Ibadan after the destruction caused by Ogun Owu.</p>
-        </div>
-
-        <div class="timeline-item">
-            <strong>Era of Basorun Oluyole</strong>
-            <p>Onibudo rose among the most respected warriors in Ibadanland.</p>
-        </div>
-    </div>
-</section>
-
-<section id="legacy">
-    <h2>Legacy & Preservation</h2>
-
-    <p>
-        The Onibudo, Toki, and Ibikunle families remain united through shared ancestry,
-        military heritage, and contributions to the growth of Ibadanland.
-    </p>
-
-    <div class="quote">
-        “A ki i sa ogun ti baba ẹni ja.”
-        <br>
-        <strong>— One does not flee from the battle fought by his ancestors.</strong>
-    </div>
-</section>
-
-<div class="footer">
-    <p><strong>ONIBUDO FAMILY HERITAGE ARCHIVE</strong></p>
-    <p>Preserving Yoruba History • Warrior Legacy • Ibadan Heritage</p>
-    <p>© 2026 Onibudo Family</p>
-</div>
-
+<!-- KEEP YOUR REMAINING SECTIONS HERE -->
 </body>
 </html>
