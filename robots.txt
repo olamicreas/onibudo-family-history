@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Replace the URL below with the actual link to your sitemap
+
+Sitemap: https://olamicreas.github.io/onibudo-family-history/sitemap.xml
